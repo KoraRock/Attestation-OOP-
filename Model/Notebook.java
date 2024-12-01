@@ -1,3 +1,6 @@
+package model;
+
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,5 +33,26 @@ public class Notebook {
                 .collect(Collectors.toList());
     }
 
-    
+    public void saveToFile(String fileName) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Note note : notes) {
+                writer.write(note.toString());
+                writer.newLine();
+            }
+        }
+    }
+
+    public void loadFromFile(String fileName) throws IOException {
+        notes.clear();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(": ", 2);
+                LocalDateTime dateTime = LocalDateTime.parse(parts[0]);
+                String description = parts[1];
+                notes.add(new Note(dateTime, description));
+            }
+        }
+    }
 }
