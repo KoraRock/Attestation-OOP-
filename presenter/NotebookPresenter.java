@@ -54,4 +54,28 @@ public class NotebookPresenter {
             view.showMessage("Ошибка считывания из файла: " + e.getMessage());
         }
     }
+
+    public void handleCommand(String choise) {
+        switch (choise) {
+            case "1":
+                addNote();                
+                break;
+            case "2":
+                showNotesForDay();                
+                break;
+            case "3":
+                showNotesForWeek();
+                break;
+            case "4":
+                saveNotes();
+                break;
+            case "5":
+                loadNotes();
+                break;
+            case "6":
+                return;
+            default:
+                System.out.println("Ошибка команды, попробуйте еще раз.");
+        }
+    }
 }
