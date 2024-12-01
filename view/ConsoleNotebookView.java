@@ -33,7 +33,7 @@ public class ConsoleNotebookView implements NotebookView {
 
     @Override
     public LocalDateTime getDateTimeInput() {
-        System.out.println("Введите дату и время (yyyy-MM-dd HH:mm): ");
+        System.out.println("Введите дату и время (yyyy-MM-dd'T'HH:mm): ");
         String input = getUserInput();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         return LocalDateTime.parse(input, formatter);

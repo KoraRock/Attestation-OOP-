@@ -73,7 +73,8 @@ public class NotebookPresenter {
                 loadNotes();
                 break;
             case "6":
-                return;
+                System.out.println("Вы завершили работу с приложением");
+                System.exit(0);
             default:
                 System.out.println("Ошибка команды, попробуйте еще раз.");
         }
